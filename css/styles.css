@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.main {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.card {
+    -webkit-box-shadow: 10px 10px 126px -30px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 126px -30px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 126px -30px rgba(0, 0, 0, 0.75);
+}
+
+header {
+    display: flex;
+    padding: 0 10%;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.account a {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding: 4px 15px;
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    margin-top: 15px;
+}
+.save input[type="submit"] {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: darkgreen;
+}
+.images {
+    width: 90%;
+    padding: 30px 5%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.image-upload {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.images-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image {
+    width: 22%;
+    height: 100%;
+    text-align: center;
+}
+.image img {
+    max-width: 100%;
+    max-height: 80%;
+}
+
+.cards-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.websites {
+    background: #fff;
+    width: 30%;
+    padding: 30px 5%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.website-inputs {
+    height: 200px;
+    overflow-y: scroll;
+    text-align: cetner;
+}
+.website-inputs input {
+    width: 85%;
+    height: 25px;
+    padding: 0 5px;
+    margin: 10px auto;
+    border: 1px solid grey;
+}
+
+.notes {
+    background: #fff;
+    width: 45%;
+    padding: 30px 5%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.notes-inputs {
+    width: 100%;
+}
+
+.notes-inputs textarea {
+    min-width: 80%;
+    max-width: 80%;
+    padding: 5%;
+    font-size: 1.3rem;
+    max-height: 120px;
+    margin: 10px auto;
+}
+
+.login {
+    width: 300px;
+    min-height: 400px;
+    margin: 200px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    text-align: center;
+}
+
+.login-inputs {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.login-inputs input {
+    margin: 0 auto;
+    font-size: 1.3rem;
+    padding: 10px 5px;
+    border: 0.5px solid grey;
+}
+
+.login input[type="submit"] {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: darkgreen;
+}
+.links {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.links a {
+    color: black;
+}
+
+.register {
+    width: 300px;
+    height: 400px;
+    margin: 200px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    text-align: center;
+}
+
+.register-inputs {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.register-inputs input {
+    margin: 0 auto;
+    font-size: 1.3rem;
+    padding: 10px 5px;
+    border: 0.5px solid grey;
+}
+
+.register input[type="submit"] {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: darkgreen;
+}
+
+.feedback {
+    margin-top: 30px;
+    width: 100%;
+    font-size: 0.8rem;
+    color: darkred;
+}
+.feedback ul li {
+    list-style-position: inside;
+}
