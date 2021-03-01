@@ -19,12 +19,12 @@
             else return false;
         }
 
-        public function editUser($email , $password , $notes , $tbd , $websites , $images){
+        public function editUser($email , $notes , $tbd , $websites , $images){
             $userToEdit = $this->findUser($email);
             if($userToEdit != false){
                 $newUser = Array(
                     "Email" => $userToEdit["Email"],
-                    "Password" => $this->hashUserPassword($password),
+                    "Password" => $userToEdit["Password"],
                     "Websites" => $websites,
                     "TBD" => $tbd,
                     "Notes" => $notes,

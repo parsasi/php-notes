@@ -40,7 +40,8 @@
                     ?>
                         <div class="image">
                             <img src="<?php echo htmlspecialchars($image) ?>"/>
-                            <input type="checkbox" name="<?php echo htmlspecialchars($image) ?>"/> <span>Delete</span>
+                            <input type="checkbox" name="delete[<?php echo htmlspecialchars($image) ?>]"/> <span>Delete</span>
+
                         </div>
 
                     <?php } ?>

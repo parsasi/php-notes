@@ -8,9 +8,9 @@
     require_once('helpers/validation.php');
 
 
-
-    $file = uploadFile($_FILES , $error);
+    $file = uploadImages($_FILES , $error);
     $websites = handleWebsites($_POST["website"] , $error);
+    isset($_POST["delete"]) && deleteImages($currentUser["Images"] , $_POST["delete"]);
 
     saveUser($_POST["notes"] , $_POST["TBD"] , $websites , $file);
     header('Location: index.php');
@@ -19,21 +19,21 @@
 
 
 
-function saveUser($notes , $TBD , $websites , $file){
+    function saveUser($notes , $TBD , $websites , $file){
         global $currentUser;
 
         require_once('helpers/userDto.php');
         $userDto = new UserDto();
 
-//        var_dump($currentUser["Images"] , [$file]);
         $websitesToSave = array_merge($currentUser["Websites"] , $websites);
-        $imagesToSave = [];
+        $imagesToSave = $currentUser["Images"];
         if($file != false){
-            $imagesToSave = array_merge ($currentUser["Images"] , [$file]);
+            $imagesToSave = array_merge ($imagesToSave , [$file]);
+            //Only keeping the last 4 elements in the array
+            $imagesToSave = array_slice($imagesToSave, count($imagesToSave) - 4);
         }
-        var_dump($currentUser["Websites"]);
         //Not ideal that I'm updating everything from the currentUser everytime!
-        $userDto->editUser($currentUser["Email"] , $currentUser["Password"] , $notes , $TBD , $websitesToSave, $imagesToSave);
+        $userDto->editUser($currentUser["Email"]  , $notes , $TBD , $websitesToSave, $imagesToSave);
 
 
     }
@@ -52,7 +52,18 @@ function saveUser($notes , $TBD , $websites , $file){
         return $websitesToAdd;
     }
 
-    function uploadFile($files , &$error){
+    function deleteImages(&$images , $imagesToDelete){
+        foreach($imagesToDelete as $deleteKey => $deleteValue){
+            if($deleteValue == "on"){
+                $imageKey = array_search($deleteKey , $images);
+                if($imageKey !== false){
+                    unset($images[$imageKey]);
+                }
+            }
+        }
+    }
+
+    function uploadImages($files , &$error){
         if($files["image"]["size"] > 0){
             require_once("helpers/randomGenerator.php");
             $target_dir = "uploads/";
