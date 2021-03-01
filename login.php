@@ -48,7 +48,7 @@
         </div>
       </form>
       <div class="links">
-        <a href="/forgot.php">Forgot Password</a>
+        <a href="/reset.php">Forgot Password</a>
         <a href="/register.php"> Register </a>
       </div>
     </div>

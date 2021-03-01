@@ -30,9 +30,13 @@
                     return $user;
                 }
             }
+            $this->logout();
+            return false;
+        }
+
+        function logout(){
             session_destroy();
             header('Location: login.php');
-            return false;
         }
 
     }

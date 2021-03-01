@@ -1,4 +1,17 @@
 <?php
+    if(isset($_POST["email"])){
+        $error = Array();
+        require_once('helpers/userDto.php');
+        require_once('helpers/randomGenerator.php');
+        $userDto = new UserDto();
+        $newPassword = generate();
+        $changeResult = $userDto->editUserPassword($_POST["email"] , $newPassword);
+        if($changeResult){
+            header('Location: reset-confirmed.php?password=' . $newPassword);
+        }else{
+            array_push($error , "Could not find the user!");
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +29,7 @@
     <form action="/reset.php" method="POST">
         <div class="register-inputs">
             <input type="email" placeholder="email..." name="email" />
-            <input
-                type="password"
-                placeholder="new password..."
-                name="password"
-            />
-            <input
-                type="password"
-                placeholder="Confirm password..."
-                name="password-confirm"
-            />
+
         </div>
         <input type="submit" name="submit" value="Reset" />
     </form>
