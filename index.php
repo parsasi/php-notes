@@ -49,7 +49,7 @@
                 <div class="image-upload">
                     <h3>Add an image</h3>
                     <span>(Only 4 images allowed)</span>
-                    <input type="file" name="new-image"  accept="image/png, image/jpeg" />
+                    <input type="file" name="image"  accept="image/png, image/jpeg" />
                 </div>
             </div>
             <div class="cards-row">

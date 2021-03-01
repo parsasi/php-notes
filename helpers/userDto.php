@@ -23,14 +23,14 @@
             $userToEdit = $this->findUser($email);
             if($userToEdit != false){
                 $newUser = Array(
-                    "Email" => $userToEdit->email,
+                    "Email" => $userToEdit["Email"],
                     "Password" => $this->hashUserPassword($password),
                     "Websites" => $websites,
                     "TBD" => $tbd,
                     "Notes" => $notes,
                     "Images" => $images
                 );
-                $this->db->editRow("users" , "Email" , $userToEdit->email , $newUser);
+                $this->db->editRow("users" , "Email" , $userToEdit["Email"] , $newUser);
                 return true;
             }
             return false;

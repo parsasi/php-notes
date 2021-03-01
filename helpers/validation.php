@@ -2,7 +2,8 @@
 
 $regLibrary = Array(
     "email" => '~^\S+@\S+$~',
-    "password" => '~^.{6,}$~'
+    "password" => '~^.{6,}$~',
+    "url" => "/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/"
 );
 
 function validateLogin($email , $password){
@@ -28,4 +29,9 @@ function validateSignUp($email , $password , $passwordConfirm){
     }
 
     return $error;
+}
+
+function validateWebsite($website){
+    global $regLibrary;
+    return preg_match($regLibrary["url"] , $website);
 }
