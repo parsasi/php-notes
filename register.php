@@ -9,7 +9,7 @@
             $userDto = new UserDto();
             $creationResult = $userDto->createUser($_POST["email"] , $_POST["password"] , "" , "" , [] , []);
             if($creationResult){
-                header("Location: /login.php");
+                header("Location: /confirmed.php");
             }else{
                 array_push($error , "Something went wrong!");
             }
@@ -54,7 +54,7 @@
     </form>
 
     <div class="links">
-        <a href="/login"> Login </a>
+        <a href="/login.php"> Login </a>
     </div>
 </div>
 </body>

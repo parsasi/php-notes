@@ -13,8 +13,8 @@
         }
         public function findUser($email){
             $searchResult =  $this->db->searchTable('users' , 'Email' , $email);
-            if(count($searchResult) > 0){
-                return $searchResult[0];
+            if(count($searchResult) >= 0){
+                return array_values($searchResult)[0];
             }
             else return false;
         }
@@ -28,7 +28,7 @@
                     "Websites" => $websites,
                     "TBD" => $tbd,
                     "Notes" => $notes,
-                    "image" => $images
+                    "Images" => $images
                 );
                 $this->db->editRow("users" , "Email" , $userToEdit->email , $newUser);
                 return true;
@@ -46,7 +46,7 @@
                     "Websites" => $websites,
                     "TBD" => $tbd,
                     "Notes" => $notes,
-                    "image" => $images
+                    "Images" => $images
                 );
                 $this->db->createRow("users" , $newUser);
                 return true;

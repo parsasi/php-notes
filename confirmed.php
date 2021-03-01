@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="register card">
-    <h2>Registration confirmed. Please <a href="/login"> Login </a></h2>
+    <h2>Registration confirmed. Please <a href="/login.php"> Login </a></h2>
 </div>
 </body>
 </html>

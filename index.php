@@ -1,5 +1,9 @@
 <?php
-require_once('db/db.php');
+    session_start();
+    require_once('helpers/auth.php');
+    //Auth->authenticate will automatically protect the page against non-logged-in users
+    $auth = new Auth();
+    $currentUser = $auth->authenticate($_SESSION);
 
 ?>
 
@@ -13,11 +17,11 @@ require_once('db/db.php');
     <title>Static Template</title>
 </head>
 <body>
-<form method="POST" action="/">
+<form method="POST" action="/save.php" enctype="multipart/form-data">
     <div class="main">
         <header class="card">
             <div class="account">
-                <div class="email"><span>parsasi@rocketmail.com</span></div>
+                <div class="email"><span><?php echo htmlspecialchars($currentUser["Email"]) ?></span></div>
                 <div class="logout">
                     <a href="/logout.php">Logout</a>
                 </div>
@@ -31,12 +35,16 @@ require_once('db/db.php');
             <div class="card images">
                 <h2>Images</h2>
                 <div class="image-list">
-                    <div class="image">
-                        <img
-                            src="https://images.unsplash.com/photo-1614443822810-494e4014f6fc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        />
-                        <input type="checkbox" /> <span>Delete</span>
-                    </div>
+                    <?php
+                            foreach($currentUser["Images"] as $image){
+                    ?>
+                        <div class="image">
+                            <img src="<?php echo htmlspecialchars($image) ?>"/>
+                            <input type="checkbox" name="<?php echo htmlspecialchars($image) ?>"/> <span>Delete</span>
+                        </div>
+
+                    <?php } ?>
+
                 </div>
                 <div class="image-upload">
                     <h3>Add an image</h3>
@@ -48,20 +56,25 @@ require_once('db/db.php');
                 <div class="card websites">
                     <h2>Websites</h2>
                     <div class="website-inputs">
-                        <input type="text" placeholder="website..." />
-                        <input type="text" placeholder="website..." />
-                        <input type="text" placeholder="website..." />
-                        <input type="text" placeholder="website..." />
+                        <?php
+                            foreach($currentUser["Websites"] as $web){ ?>
+                                <a href="<?php echo htmlspecialchars($web) ?>" target="_blank"><input type="text" style="cursor:pointer;" value="<?php echo htmlspecialchars($web) ?>" disabled="disabled"/></a>
+                           <?php }
+                        ?>
+                        <input type="url" name="website[]" placeholder="website..." />
+                        <input type="url" name="website[]" placeholder="website..." />
+                        <input type="url" name="website[]" placeholder="website..." />
+                        <input type="url" name="website[]" placeholder="website..." />
                     </div>
                 </div>
                 <div class="card notes">
                     <h2>Notes</h2>
                     <div class="notes-inputs">
-                        <textarea placeholder="Write some notes..."></textarea>
+                        <textarea name="notes" placeholder="Write some notes..."><?php echo htmlspecialchars($currentUser["Notes"]) ?></textarea>
                     </div>
                     <h2>TBD</h2>
                     <div class="notes-inputs">
-                        <textarea placeholder="Write some notes..."></textarea>
+                        <textarea name="TBD" placeholder="Write some notes..."><?php echo htmlspecialchars_decode($currentUser["TBD"]) ?></textarea>
                     </div>
                 </div>
         </main>

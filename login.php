@@ -1,11 +1,17 @@
 <?php
+    session_start();
+
     $error = Array();
     require_once('helpers/auth.php');
     $auth = new Auth();
     if(isset($_POST["submit"])){
         $authenticateUser = $auth->verify($_POST["email"] , $_POST["password"]);
         if($authenticateUser){
-            //set session and shit
+            $logindatetime = date("Y/m/d");
+            $_SESSION['email'] = $_POST["email"];
+            $_SESSION['timer'] = time();
+            $_SESSION['logintime'] = $logindatetime;
+            header('Location: index.php');
         }
         else{
             array_push($error , "Username or Password is wrong!");
@@ -42,8 +48,8 @@
         </div>
       </form>
       <div class="links">
-        <a href="/forgot">Forgot Password</a>
-        <a href="/register"> Register </a>
+        <a href="/forgot.php">Forgot Password</a>
+        <a href="/register.php"> Register </a>
       </div>
     </div>
   </body>

@@ -3,7 +3,6 @@
 
         function open($filePath){
             $root=$_SERVER['DOCUMENT_ROOT'];
-            var_dump($filePath);
             $filePath = $root . $filePath;
             $fileHandle =  fopen($filePath , 'r+');
             $fileContent = json_decode(fread($fileHandle,filesize($filePath)) , true);
